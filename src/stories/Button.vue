@@ -1,27 +1,45 @@
 <template>
-  <button type="button" :class="classes" @click="onClick" :style="style">{{ label }}</button>
+  <button
+    type="primary"
+    :class="[classes, plain, text, round]"
+    @click="onClick"
+    :style="style"
+  >
+    <span> {{ label }} </span>
+  </button>
 </template>
 
 <script>
-import './button.css';
-import { reactive, computed } from 'vue';
+import "./button.css";
+import { reactive, computed } from "vue";
 
 export default {
-  name: 'my-button',
+  name: "my-button",
 
   props: {
     label: {
       type: String,
       required: true,
     },
-    primary: {
+    type: {
+      type: String,
+    },
+    isPlain: {
+      type: Boolean,
+      default: false,
+    },
+    isText: {
+      type: Boolean,
+      default: false,
+    },
+    isRound: {
       type: Boolean,
       default: false,
     },
     size: {
       type: String,
       validator: function (value) {
-        return ['small', 'medium', 'large'].indexOf(value) !== -1;
+        return ["small", "medium", "large"].indexOf(value) !== -1;
       },
     },
     backgroundColor: {
@@ -29,24 +47,62 @@ export default {
     },
   },
 
-  emits: ['click'],
+  emits: ["click"],
 
   setup(props, { emit }) {
-    props = reactive(props);
+    // console.log("props.plain", props.isPlain);
     return {
       classes: computed(() => ({
-        'storybook-button': true,
-        'storybook-button--primary': props.primary,
-        'storybook-button--secondary': !props.primary,
-        [`storybook-button--${props.size || 'medium'}`]: true,
+        "MYX-button": true,
+        "MYX-button--block": !props.isText,
+        "MYX-button--primary": props.type === "primary" && !props.isText,
+        "MYX-button--success": props.type === "success" && !props.isText,
+        "MYX-button--danger": props.type === "danger" && !props.isText,
       })),
-      style: computed(() => ({
-        backgroundColor: props.backgroundColor,
+      plain: computed(() => {
+        if (props.isPlain && !props.isText) {
+          return {
+            "MYX-button--plain": true,
+            "MYX-button--primary--plain": props.type === "primary",
+            "MYX-button--success--plain": props.type === "success",
+            "MYX-button--danger--plain": props.type === "danger",
+          };
+        } else {
+          return "";
+        }
+      }),
+      text: computed(() => {
+        if (props.isText) {
+          return {
+            "MYX-button--text": true,
+            "MYX-button--primary--text": props.type === "primary",
+            "MYX-button--success--text": props.type === "success",
+            "MYX-button--danger--text": props.type === "danger",
+          };
+        } else {
+          return "";
+        }
+      }),
+      round: computed(() => ({
+        "MYX-button--round": props.isRound && !props.isText,
       })),
+      // style: computed(() => ({
+      //   backgroundColor: props.backgroundColor,
+      // })),
       onClick() {
-        emit('click');
-      }
-    }
+        emit("click");
+      },
+    };
   },
 };
+
+// {
+//         "MYX-button--plain": props.isPlain && !props.isText,
+//         "MYX-button--primary--plain":
+//           props.type === "primary" && props.isPlain && !props.isText,
+//         "MYX-button--success--plain":
+//           props.type === "success" && props.isPlain && !props.isText,
+//         "MYX-button--danger--plain":
+//           props.type === "danger" && props.isPlain && !props.isText,
+//       }
 </script>
