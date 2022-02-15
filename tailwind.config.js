@@ -3,10 +3,18 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     minWidth: {
+      1: "1rem",
+      1.5: "1.5rem",
       2: "2rem",
+      2.5: "2.5rem",
+      3: "3rem",
     },
     minHeight: {
+      1: "1rem",
+      1.5: "1.5rem",
       2: "2rem",
+      2.5: "2.5rem",
+      3: "3rem",
     },
     extend: {
       animation: {

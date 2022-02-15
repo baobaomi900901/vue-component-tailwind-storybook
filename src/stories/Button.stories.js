@@ -10,7 +10,7 @@ export default {
     onClick: {},
     size: {
       control: { type: "select" },
-      options: ["small", "medium", "large"],
+      options: ["tiny", "small", "medium", "large"],
     },
   },
 };
@@ -28,70 +28,85 @@ const Template = (args) => ({
 });
 
 export const Default = Template.bind({});
-// More on args: https://storybook.js.org/docs/vue/writing-stories/args
+// More on args: https://storybook.js.org/docs/vue/writing-stories/args1
 Default.args = {
   type: "",
   label: "button",
 };
 
 export const Primary = Template.bind({});
-// More on args: https://storybook.js.org/docs/vue/writing-stories/args
 Primary.args = {
   type: "primary",
   label: "button",
 };
 
 export const Success = Template.bind({});
-// More on args: https://storybook.js.org/docs/vue/writing-stories/args
 Success.args = {
   type: "success",
   label: "button",
 };
 
 export const Danger = Template.bind({});
-// More on args: https://storybook.js.org/docs/vue/writing-stories/args
 Danger.args = {
   type: "danger",
   label: "button",
 };
 
+export const Glass = Template.bind({});
+Glass.args = {
+  type: "glass",
+  label: "button",
+};
+
 export const Plain = Template.bind({});
-// More on args: https://storybook.js.org/docs/vue/writing-stories/args
 Plain.args = {
   type: "",
   isPlain: true,
   label: "button",
 };
 
-export const Text = Template.bind({});
-// More on args: https://storybook.js.org/docs/vue/writing-stories/args
-Text.args = {
-  type: "",
-  isText: true,
-  label: "button",
-};
-
 export const Round = Template.bind({});
-// More on args: https://storybook.js.org/docs/vue/writing-stories/args
 Round.args = {
   type: "",
   isRound: true,
   label: "button",
 };
 
-// export const Secondary = Template.bind({});
-// Secondary.args = {
-//   label: "Button",
-// };
+export const Text = Template.bind({});
+Text.args = {
+  type: "",
+  isText: true,
+  label: "button",
+  icon: "@",
+};
 
-// export const Large = Template.bind({});
-// Large.args = {
-//   size: "large",
-//   label: "Button",
-// };
+export const Tiny = Template.bind({});
+Tiny.args = {
+  size: "tiny",
+  label: "Button",
+};
 
-// export const Small = Template.bind({});
-// Small.args = {
-//   size: "small",
-//   label: "Button",
-// };
+export const Small = Template.bind({});
+Small.args = {
+  size: "small",
+  label: "Button",
+};
+
+export const Medium = Template.bind({});
+Medium.args = {
+  size: "medium",
+  label: "Button",
+};
+
+export const Large = Template.bind({});
+Large.args = {
+  size: "large",
+  label: "Button",
+};
+
+export const Icon = Template.bind({});
+Icon.args = {
+  icon: "@",
+  size: "medium",
+  label: "Button",
+};
