@@ -1,7 +1,7 @@
 <template>
   <button
     ref="button"
-    :class="[classes, plain, text, round, size]"
+    :class="[classes, plain, text, round, size, disabled]"
     @click="onClick"
     :style="style"
   >
@@ -39,6 +39,9 @@ export default {
     isRound: {
       type: Boolean,
       default: false,
+    },
+    disabled: {
+      type: String,
     },
     size: {
       type: String,
@@ -81,7 +84,7 @@ export default {
         const type = props.type ? `MYX-button--${props.type}` : "";
         return {
           "MYX-button": true,
-          "MXY-button--hoverActive": !props.type,
+          "MXY-button--hoverActive": !props.type && !props.disabled,
           "MYX-button--block": !props.isText,
           [type]: !props.isText,
         };
@@ -105,6 +108,9 @@ export default {
       round: computed(() => ({
         "MYX-button--round": props.isRound && !props.isText,
       })),
+      disabled: computed(() => ({
+        "MYX-button-disabled": props.disabled,
+      })),
       size: computed(() => {
         const type = `MYX-button--${props.size}`;
         return {
@@ -112,7 +118,9 @@ export default {
         };
       }),
       onClick() {
-        emit("click");
+        if (!props.disabled) {
+          emit("click");
+        }
       },
     };
   },

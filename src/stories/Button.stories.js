@@ -110,3 +110,9 @@ Icon.args = {
   size: "medium",
   label: "Button",
 };
+
+export const Disabled = Template.bind({});
+Disabled.args = {
+  disabled: "disabled",
+  label: "Button",
+};

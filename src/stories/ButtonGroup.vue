@@ -6,15 +6,30 @@
 * @version V3.0.0
 !-->
 <template>
-  <div id="ButtonGroup" class="ButtonGroup"></div>
+  <div :class="buttonGroup"><slot></slot></div>
 </template>
 
 <script lang="ts">
-import { ref, reactive } from "vue";
+import "./buttonGroup.css";
+import { ref, reactive, computed } from "vue";
+import MyButton from "./Button.vue";
 export default {
-  name: "ButtonGroup",
-  setup() {
-    return {};
+  name: "my-button-group",
+  props: {
+    lable: {
+      type: String,
+    },
+    size: {
+      type: String,
+    },
+  },
+  setup(props) {
+    console.log(props.lable);
+    return {
+      buttonGroup: computed(() => ({
+        "MYX-buttonGroup": true,
+      })),
+    };
   },
 };
 </script>
