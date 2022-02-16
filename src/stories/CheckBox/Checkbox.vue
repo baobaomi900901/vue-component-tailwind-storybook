@@ -1,36 +1,34 @@
 <!--
 * @description  参数1
-* @fileName  Radio
+* @fileName  CheckBox
 * @author userName
-* @date 2022-02-15 18:30:29
+* @date 2022-02-16 17:39:02
 * @version V3.0.0
 !-->
 <template>
-  <label :class="classs" :for="label">
+  <label :for="label" :class="classs">
     <input
-      type="radio"
+      type="checkbox"
       name=""
       :id="label"
-      :value="label"
-      :checked="checked"
-      :disabled="disabled"
       @click="onChang(label)"
+      :checked="checked"
     />
     <slot></slot>
   </label>
 </template>
 
 <script lang="ts">
-import "./radioButton.css";
-import { ref, computed } from "vue";
+import "./checkbox.css";
+import { ref, reactive, computed } from "vue";
 export default {
-  name: "my-radio-button",
+  name: "my-checkbox",
   props: {
-    checked: {
-      type: Boolean,
-    },
     label: {
       type: String,
+    },
+    checked: {
+      type: Boolean,
     },
     type: {
       type: String,
@@ -38,23 +36,17 @@ export default {
         return ["primary", "success", "danger"].indexOf(value) !== -1;
       },
     },
-    disabled: {
-      type: Boolean,
-    },
   },
   emits: ["click"],
   setup(props, { emit }) {
+    console.log(props.label);
     const checked = ref(props.checked);
-    console.log("checked.value :>>", checked.value);
     return {
-      checked,
       classs: computed(() => {
-        // const type = props.type ? `MYX-radio--button--${props.type}` : "";
+        const type = props.type ? `MYX-checkbox--${props.type}` : "";
         return {
-          "MYX-radio--button": true,
-          "MYX-radio--button--checked": checked.value,
-          "MYX-radio--button--disabled": props.disabled,
-          // [type]: props.type,
+          "MYX-checkbox": true,
+          [type]: props.type,
         };
       }),
       onChang($event) {
