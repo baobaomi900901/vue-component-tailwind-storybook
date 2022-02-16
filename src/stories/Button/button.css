@@ -178,6 +178,6 @@
   @apply mx-5;
 }
 
-.MYX-button-disabled {
+.MYX-button:disabled {
   @apply cursor-not-allowed opacity-50 active:scale-100;
 }

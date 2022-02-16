@@ -113,6 +113,6 @@ Icon.args = {
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  disabled: "disabled",
+  disabled: true,
   label: "Button",
 };

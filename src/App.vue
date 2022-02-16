@@ -10,15 +10,17 @@
       via-red-500
       to-pink-500
       p-10
+      flex
     "
   >
-    <MyButton type="glass">button</MyButton>
+    <MyRadio type="primary" label="1"></MyRadio>
+    <MyRadio type="" class="ml-3" label="2"></MyRadio>
   </div>
 </template>
 
 <script setup lang="ts">
 import HelloWorld from "./components/HelloWorld.vue";
-import MyButton from "./stories/Button.vue";
+import MyRadio from "./stories/Radio/Radio.vue";
 </script>
 
 <style>

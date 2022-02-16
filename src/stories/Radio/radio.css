@@ -1,0 +1,59 @@
+.MYX-radio {
+  @apply appearance-none w-6 h-6 border border-gray-400 rounded-full ml-3;
+  /* background: hsl(259 94% 61%); */
+}
+
+.MYX-radio:checked {
+  @apply border-gray-900 bg-gray-900;
+  --b1: 100 0% 100%;
+  animation: radiomark 0.2s ease-in-out;
+  box-shadow: 0 0 0 4px hsl(var(--b1)) inset, 0 0 0 4px hsl(var(--b1)) inset;
+}
+
+.MYX-radio + label {
+  @apply ml-2 leading-6 text-lg;
+}
+
+.MYX-radio--primary:checked + label {
+  @apply text-blue-500;
+}
+
+.MYX-radio--primary:checked {
+  @apply border-blue-500 bg-blue-500;
+}
+
+.MYX-radio--success:checked + label {
+  @apply text-green-500;
+}
+
+.MYX-radio--success:checked {
+  @apply border-green-500 bg-green-500;
+}
+
+.MYX-radio--danger:checked + label {
+  @apply text-red-500;
+}
+
+.MYX-radio--danger:checked {
+  @apply border-red-500 bg-red-500;
+}
+
+.MYX-radio:disabled {
+  @apply opacity-50 cursor-not-allowed animate-none;
+}
+
+.MYX-radio:disabled + label {
+  @apply opacity-50 cursor-not-allowed;
+}
+
+@keyframes radiomark {
+  0% {
+    box-shadow: 0 0 0 12px hsl(var(--b1)) inset, 0 0 0 12px hsl(var(--b1)) inset;
+  }
+  50% {
+    box-shadow: 0 0 0 3px hsl(var(--b1)) inset, 0 0 0 3px hsl(var(--b1)) inset;
+  }
+  100% {
+    box-shadow: 0 0 0 4px hsl(var(--b1)) inset, 0 0 0 4px hsl(var(--b1)) inset;
+  }
+}
