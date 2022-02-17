@@ -1,38 +1,28 @@
-<!--
-* @description  参数1
-* @fileName  Radio
-* @author userName
-* @date 2022-02-15 18:30:29
-* @version V3.0.0
-!-->
 <template>
-  <div class="flex">
+  <label :for="modelValue" :class="classs">
     <input
       type="radio"
-      name=""
-      :id="label"
-      :class="classs"
-      :value="label"
+      :id="modelValue"
+      :name="name"
+      :value="modelValue"
       :disabled="disabled"
-      @click="onChang(label)"
+      :checked="checked"
+      @click="onChang"
     />
-    <label :for="label"
-      ><slot>选项{{ label }}</slot></label
-    >
-  </div>
+    <span>
+      <slot>选项{{ label }}</slot>
+    </span>
+  </label>
 </template>
 
 <script lang="ts">
 import "./radio.css";
-import { ref, computed } from "vue";
+import { ref, computed, inject } from "vue";
 export default {
   name: "my-radio",
   props: {
-    checked: {
-      type: Boolean,
-    },
-    label: {
-      type: String,
+    modelValue: {
+      type: [String, Boolean, Number],
     },
     type: {
       type: String,
@@ -40,27 +30,37 @@ export default {
         return ["primary", "success", "danger"].indexOf(value) !== -1;
       },
     },
+    checked: {
+      type: Boolean,
+    },
+    name: {
+      type: String,
+    },
     disabled: {
       type: Boolean,
     },
   },
-  emits: ["click"],
+  emits: ["update:modelValue"],
   setup(props, { emit }) {
-    const checked = ref(props.checked);
+    const radioName = inject("radioName"); // from RadioGroup
     return {
-      checked,
       classs: computed(() => {
-        const type = props.type ? `MYX-radio--${props.type}` : "";
+        const type = `MYX-radio--${props.type}`;
         return {
           "MYX-radio": true,
           [type]: props.type,
         };
       }),
-      onChang($event) {
-        if (!props.disabled && !checked.value) {
-          checked.value = true;
-          emit("click", $event);
+      name: computed(() => {
+        if (props.name) {
+          console.log("props.name", props.name);
+          return props.name;
         }
+        return radioName;
+      }),
+      onChang() {
+        console.log(props.modelValue);
+        emit("update:modelValue", props.modelValue);
       },
     };
   },

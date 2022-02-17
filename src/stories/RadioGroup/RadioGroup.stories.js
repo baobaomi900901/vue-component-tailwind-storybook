@@ -1,9 +1,10 @@
-import MyRadioButton from "./RadioButton.vue";
+import MyRadio from "../Radio/Radio.vue";
+import MyRadioGroup from "./RadioGroup.vue";
 
 // More on default export: https://storybook.js.org/docs/vue/writing-stories/introduction#default-export
 export default {
-  title: "Example/RadioButton",
-  component: MyRadioButton,
+  title: "Example/RadioGroup",
+  component: MyRadioGroup,
   // More on argTypes: https://storybook.js.org/docs/vue/api/argtypes
   argTypes: {
     onClick: {},
@@ -11,26 +12,24 @@ export default {
 };
 
 // More on component templates: https://storybook.js.org/docs/vue/writing-stories/introduction#using-args
-const Template = (args) => ({
+const Template = () => ({
   // Components used in your story `template` are defined in the `components` object
-  components: { MyRadioButton },
+  components: { MyRadioGroup, MyRadio },
   // The story's `args` need to be mapped into the template through the `setup()` method
-  setup() {
-    return { args };
+  setup(args) {
+    const bbm = "bbm";
+    const vvn = "vvn";
+    return { args, bbm, vvn };
   },
   // And then the `args` are bound to your component with `v-bind="args"`
-  template: `<my-radio-button v-bind='args'>烧饼</my-radio-button>`,
+  template: `<my-radio-group name='radio'>
+  					<my-radio v-bind='args' name='radio' v-model="bbm">直角</my-radio>
+  					<my-radio v-bind='args' name='radio' v-model="vvn">钝角</my-radio>
+  	          </my-radio-group>`,
 });
 
 export const Default = Template.bind({});
 // More on args: https://storybook.js.org/docs/vue/writing-stories/args1
 Default.args = {
-  label: "吃烧饼",
-};
-
-export const Disabled = Template.bind({});
-// More on args: https://storybook.js.org/docs/vue/writing-stories/args1
-Disabled.args = {
-  label: "吃披萨",
-  disabled: true,
+  modelValue: "锐角",
 };
