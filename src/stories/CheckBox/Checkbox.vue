@@ -11,6 +11,7 @@
       type="checkbox"
       name=""
       :id="label"
+      :value="label"
       @click="onChang(label)"
       :checked="checked"
     />

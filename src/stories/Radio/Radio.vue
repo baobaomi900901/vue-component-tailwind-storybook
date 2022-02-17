@@ -13,7 +13,6 @@
       :id="label"
       :class="classs"
       :value="label"
-      :checked="checked"
       :disabled="disabled"
       @click="onChang(label)"
     />
@@ -47,7 +46,6 @@ export default {
   },
   emits: ["click"],
   setup(props, { emit }) {
-    console.log(props.disabled);
     const checked = ref(props.checked);
     return {
       checked,
@@ -60,7 +58,7 @@ export default {
       }),
       onChang($event) {
         if (!props.disabled && !checked.value) {
-          this.checked = true;
+          checked.value = true;
           emit("click", $event);
         }
       },
