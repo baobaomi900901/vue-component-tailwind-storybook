@@ -20,12 +20,16 @@ const Template = (args) => ({
   components: { MyRadio },
   // The story's `args` need to be mapped into the template through the `setup()` method
   setup() {
-    const bbm = ref("直角");
-    return { args, bbm };
+    const groupValue = ref("直角");
+    // const bbm = "vvn";
+    return { args, groupValue };
   },
   // And then the `args` are bound to your component with `v-bind="args"`
-  template: `<my-radio name='radio1' v-model="bbm" value="直角">直角</my-radio>
-             <my-radio name='radio2' v-model="bbm" value="钝角">钝角</my-radio>`,
+  template: ` <div class="flex">
+                  <my-radio v-model="groupValue" value="直角" v-bind="args">直角</my-radio>
+                  <my-radio v-model="groupValue" value="钝角" >钝角</my-radio> 
+                  <my-radio v-model="groupValue" value="锐角" >锐角</my-radio> 
+              </div>`,
 });
 
 export const Default = Template.bind({});
@@ -35,6 +39,5 @@ Default.args = {};
 export const Disabled = Template.bind({});
 // More on args: https://storybook.js.org/docs/vue/writing-stories/args1
 Disabled.args = {
-  checked: true,
   disabled: true,
 };

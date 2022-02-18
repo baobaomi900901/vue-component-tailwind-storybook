@@ -1,20 +1,13 @@
-<!--
-* @description  参数1
-* @fileName  Radio
-* @author userName
-* @date 2022-02-15 18:30:29
-* @version V3.0.0
-!-->
 <template>
-  <label :class="classs" :for="label">
+  <label :for="value" :class="classs">
     <input
       type="radio"
-      name=""
-      :id="label"
-      :value="label"
-      :checked="checked"
+      :id="value"
+      :name="name"
+      :value="value"
       :disabled="disabled"
-      @click="onChang(label)"
+      :checked="isCheck"
+      @change="radioChange"
     />
     <slot></slot>
   </label>
@@ -22,47 +15,61 @@
 
 <script lang="ts">
 import "./radioButton.css";
-import { ref, computed } from "vue";
+import { ref, computed, inject } from "vue";
 export default {
   name: "my-radio-button",
   props: {
-    checked: {
-      type: Boolean,
-    },
-    label: {
-      type: String,
+    modelValue: {
+      type: [String, Boolean, Number],
     },
     type: {
       type: String,
       validator: function (value) {
-        return ["primary", "success", "danger"].indexOf(value) !== -1;
+        return ["block", "isPlain"].indexOf(value) !== -1;
       },
+    },
+    name: {
+      type: String,
+    },
+    value: {
+      type: [String, Boolean, Number],
     },
     disabled: {
       type: Boolean,
     },
   },
-  emits: ["click"],
+  emits: ["update:modelValue"],
   setup(props, { emit }) {
-    const checked = ref(props.checked);
-    console.log("checked.value :>>", checked.value);
+    const radioGroup = inject("radioGroup", undefined) as any; // from RadioGroup
+    // console.log(radioGroup.type);
+    const classs = computed(() => {
+      return {
+        "MYX-radio--button": true,
+        "MYX-radio--button--checked": isCheck.value,
+        "MYX-radio--button--disabled": props.disabled,
+        "MYX-radio--button--block": props.type,
+        "MYX-radio--button--isPlain":
+          (props.type === "isPlain") | (radioGroup.type === "isPlain"),
+      };
+    });
+    const radioValue = computed(() =>
+      !!radioGroup ? radioGroup.modelValue : props.modelValue
+    );
+
+    const isCheck = computed(() => !!(radioValue.value == props.value));
+
+    const radioChange = () => {
+      // 判断 RadioGroup 是否有传入值
+      if (!!radioGroup) {
+        radioGroup.changeEvent(props.value);
+      } else {
+        emit("update:modelValue", props.value);
+      }
+    };
     return {
-      checked,
-      classs: computed(() => {
-        // const type = props.type ? `MYX-radio--button--${props.type}` : "";
-        return {
-          "MYX-radio--button": true,
-          "MYX-radio--button--checked": checked.value,
-          "MYX-radio--button--disabled": props.disabled,
-          // [type]: props.type,
-        };
-      }),
-      onChang($event) {
-        if (!props.disabled && !checked.value) {
-          this.checked = true;
-          emit("click", $event);
-        }
-      },
+      classs,
+      isCheck,
+      radioChange,
     };
   },
 };

@@ -1,15 +1,31 @@
 .MYX-radio--button {
-  /* @apply min-w-2 min-h-2 text-blue-500 select-none capitalize font-normal  flex flex-wrap flex-shrink justify-center items-center rounded-md box-border text-gray-900 border-gray-400 border  transition duration-200 ease-in-out; */
-  @apply min-w-2 min-h-2 leading-8  px-4 inline-block text-center border  border-gray-400 rounded-md select-none;
+  @apply min-w-2 min-h-2 leading-8  px-4 inline-block text-center border border-gray-400 select-none hover:cursor-pointer;
 }
 .MYX-radio--button > input[type="radio"] {
   @apply appearance-none hidden;
 }
 
+.MYX-radio--button--checked.MYX-radio--button--isPlain {
+  @apply bg-white text-blue-500;
+}
+
 .MYX-radio--button--checked {
-  @apply border-blue-500 text-blue-500;
+  @apply bg-blue-500 text-white z-10 border-blue-500;
 }
 
 .MYX-radio--button--disabled {
-  @apply opacity-50;
+  @apply opacity-50 hover:cursor-not-allowed;
+}
+
+.MYX-radio--button + .MYX-radio--button {
+  @apply border-l;
+  margin-left: -1px;
+}
+
+.MYX-radio--button:first-of-type {
+  @apply rounded-l-md;
+}
+
+.MYX-radio--button:last-of-type {
+  @apply rounded-r-md;
 }
