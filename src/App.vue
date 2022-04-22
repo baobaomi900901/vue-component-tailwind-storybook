@@ -11,6 +11,11 @@
 </template>
 
 <script lang="ts">
+function sum(a: number,b: number){
+  return a+b;
+}
+console.log(sum(1,3));
+
 import MyRadio from "./stories/Radio/Radio.vue";
 import MyRadioGroup from "./stories/RadioGroup/RadioGroup.vue";
 import { ref, provide, toRefs } from "vue";
