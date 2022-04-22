@@ -32,10 +32,3 @@ Default.args = {
   label: "吃烧饼",
   checked: true,
 };
-
-// export const Disabled = Template.bind({});
-// // More on args: https://storybook.js.org/docs/vue/writing-stories/args1
-// Disabled.args = {
-//   label: "吃披萨",
-//   disabled: false,
-// };
