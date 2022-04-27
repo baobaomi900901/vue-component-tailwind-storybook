@@ -20,7 +20,7 @@
 </template>
 
 <script lang="ts">
-import "./checkbox.css";
+import "./Checkbox.css";
 import { ref, reactive, computed } from "vue";
 export default {
   name: "my-checkbox",

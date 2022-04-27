@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import "./button.css";
+import "./Button.css";
 import { ref, reactive, computed } from "vue";
 
 export default {

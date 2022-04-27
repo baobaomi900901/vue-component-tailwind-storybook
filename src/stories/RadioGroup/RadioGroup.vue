@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts">
-import "./radioGroup.css";
+import "./RadioGroup.css";
 import { computed, provide, reactive, toRef } from "vue";
 export default {
   name: "my-radio-group",

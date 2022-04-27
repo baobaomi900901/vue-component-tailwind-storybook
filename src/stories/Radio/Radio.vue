@@ -16,7 +16,7 @@
 </template>
 
 <script lang="ts">
-import "./radio.css";
+import "./Radio.css";
 import { ref, computed, inject, nextTick, toRef } from "vue";
 export default {
   name: "my-radio",

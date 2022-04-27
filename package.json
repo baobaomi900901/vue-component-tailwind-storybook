@@ -6,7 +6,8 @@
     "build": "vue-tsc --noEmit && vite build",
     "serve": "vite preview",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "component": "node ./shell/create/index.js"
   },
   "dependencies": {
     "vue": "^3.2.29"
@@ -21,7 +22,10 @@
     "@vue/compiler-sfc": "^3.2.30",
     "autoprefixer": "^9",
     "babel-loader": "^8.2.2",
+    "chalk": "^2.4.2",
+    "fs-extra": "^10.1.0",
     "postcss": "^8",
+    "postcss-loader": "^4",
     "tailwindcss": "^3.0.21",
     "typescript": "^4.5.5",
     "vite": "^2.3.4",
