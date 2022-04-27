@@ -89,3 +89,8 @@ npm run component xxx
 - Popconfirm 气泡确认框
 - Popover 气泡卡片
 - Tooltip 文字提示
+
+## 遇到的一些问题
+
+### Unknown at rule @apply报错
+在vscode中下载插件**PostCSS Language Support**。
