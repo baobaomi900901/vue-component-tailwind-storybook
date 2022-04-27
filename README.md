@@ -7,7 +7,10 @@
 - RadioButton 按钮样式的单选框
 - RadioGroup 单选框组
 
-## 待完成组件
+## 待完成的组件
+- Transfer 穿梭框  阿鸭正在施工🛠
+
+## 待开始组件
 暂时根据ElementUI的组件功能作为基础功能来做，在此基础上再根据自己的需求删减功能。
 ### 表单组件
 - CheckBox 复选框（我就看看安仔什么时候写）
@@ -22,7 +25,6 @@
 - Slider 滑块
 - Switch 开关
 - TimePicker 时间选择器
-- Transfer 穿梭框
 
 ### 数据展示组件
 - Avater 头像
