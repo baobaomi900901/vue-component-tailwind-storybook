@@ -1,0 +1,3 @@
+.MYX-checkbox > input[type="checkbox"] {
+  @apply border w-4 h-4;
+}

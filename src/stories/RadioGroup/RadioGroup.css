@@ -1,0 +1,15 @@
+.MYX-radio-group {
+  @apply flex;
+}
+
+.MYX-radio-group-col {
+  @apply flex flex-col;
+}
+
+.MYX-radio-group-col > .MYX-radio {
+  @apply ml-0 mt-3;
+}
+
+.MYX-radio-group-col > .MYX-radio:first-child {
+  @apply mt-0;
+}
