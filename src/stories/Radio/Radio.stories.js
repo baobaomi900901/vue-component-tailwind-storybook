@@ -27,17 +27,11 @@ const Template = (args) => ({
   // And then the `args` are bound to your component with `v-bind="args"`
   template: ` <div class="flex">
                   <my-radio v-model="groupValue" value="直角" v-bind="args">直角</my-radio>
-                  <my-radio v-model="groupValue" value="钝角" >钝角</my-radio> 
-                  <my-radio v-model="groupValue" value="锐角" >锐角</my-radio> 
+                  <my-radio v-model="groupValue" value="钝角" v-bind="args">钝角</my-radio> 
+                  <my-radio v-model="groupValue" value="锐角" v-bind="args">锐角</my-radio> 
               </div>`,
 });
 
 export const Default = Template.bind({});
 // More on args: https://storybook.js.org/docs/vue/writing-stories/args1
 Default.args = {};
-
-export const Disabled = Template.bind({});
-// More on args: https://storybook.js.org/docs/vue/writing-stories/args1
-Disabled.args = {
-  disabled: true,
-};

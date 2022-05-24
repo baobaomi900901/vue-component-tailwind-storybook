@@ -1,7 +1,7 @@
 .MYX-buttonGroup {
   @apply flex;
 }
-.MYX-buttonGroup > .MYX-button:first-child {
+.MYX-buttonGroup > .MYX-button:first-of-type {
   @apply rounded-r-none;
 }
 

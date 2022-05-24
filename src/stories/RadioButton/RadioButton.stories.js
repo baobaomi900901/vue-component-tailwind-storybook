@@ -35,31 +35,3 @@ const Template = (args) => ({
 export const Default = Template.bind({});
 // More on args: https://storybook.js.org/docs/vue/writing-stories/args1
 Default.args = {};
-
-export const Disabled = Template.bind({});
-// More on args: https://storybook.js.org/docs/vue/writing-stories/args1
-Disabled.args = {
-  disabled: true,
-};
-
-const Template2 = (args) => ({
-  // Components used in your story `template` are defined in the `components` object
-  components: { MyRadioButton, MyRadioGroup },
-  // The story's `args` need to be mapped into the template through the `setup()` method
-  setup() {
-    const groupValue = ref("烧饼");
-    return { args, groupValue };
-  },
-  // And then the `args` are bound to your component with `v-bind="args"`
-  template: `<my-radio-group v-model="groupValue" v-bind='args'>
-                <my-radio-button value="烧饼" >烧饼</my-radio-button>
-                <my-radio-button value="热干面" >热干面</my-radio-button> 
-                <my-radio-button value="蛋酒" >蛋酒</my-radio-button>
-            </my-radio-group>`,
-});
-
-export const Plain = Template2.bind({});
-// More on args: https://storybook.js.org/docs/vue/writing-stories/args1
-Plain.args = {
-  type: "isPlain",
-};

@@ -22,6 +22,41 @@ module.exports = {
       `,
     },
     extend: {
+      backgroundImage: {
+        checkedmask: `
+          linear-gradient(-45deg, transparent 65%, var(--chkbg) 0), 
+          linear-gradient(45deg, transparent 75%, var(--chkbg) 0), 
+          linear-gradient(-45deg, var(--chkbg) 40%, transparent 0), 
+          linear-gradient(45deg, var(--chkbg) 30%, var(--chkfg) 0, var(--chkfg) 40%, transparent 0), 
+          linear-gradient(-45deg, var(--chkfg) 50%, var(--chkbg) 0)
+          `,
+      },
+      colors: {
+        gold: {
+          50: "#fefdf9",
+          100: "#fefaf4",
+          200: "#fcf3e2",
+          300: "#faebd1",
+          400: "#f6dcaf",
+          500: "#F2CD8C",
+          600: "#dab97e",
+          700: "#b69a69",
+          800: "#917b54",
+          900: "#776445",
+        },
+        mygray: {
+          1: "#F6F6F6",
+        },
+      },
+      spacing: {
+        px: "1px",
+        30: "7.5rem",
+        50: "12.5rem",
+        70: "17.5rem",
+        80: "20rem",
+        100: "25rem",
+        pager: "78rem",
+      },
       animation: {
         "bt-pop": "pop 0.25s ease-out",
         "radio-checked": "radiomark 0.2s ease-in-out",
@@ -41,7 +76,14 @@ module.exports = {
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      extend: {
+        backgroundColor: ["checked"],
+        backgroundImage: ["checked"],
+        borderColor: ["checked"],
+        animation: ["checked"],
+      },
+    },
   },
   plugins: [],
 };

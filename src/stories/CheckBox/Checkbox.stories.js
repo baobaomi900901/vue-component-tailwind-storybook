@@ -1,4 +1,5 @@
 import MyCheckbox from "./Checkbox.vue";
+import { ref } from "vue";
 
 // More on default export: https://storybook.js.org/docs/vue/writing-stories/introduction#default-export
 export default {
@@ -23,12 +24,15 @@ const Template = (args) => ({
     return { args };
   },
   // And then the `args` are bound to your component with `v-bind="args"`
-  template: `<my-checkbox v-bind='args'>烧饼</my-checkbox>`,
+  template: `<div class="flex">
+                <my-checkbox v-bind='args'>吃烧饼</my-checkbox>
+              </div>`,
 });
 
 export const Default = Template.bind({});
 // More on args: https://storybook.js.org/docs/vue/writing-stories/args1
 Default.args = {
-  label: "吃烧饼",
-  checked: true,
+  value: "烧饼",
+  checked: false,
+  disabled: false
 };

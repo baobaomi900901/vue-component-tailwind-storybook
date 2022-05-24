@@ -10,7 +10,7 @@
       @change="radioChange"
     />
     <span>
-      <slot>选项{{ label }}</slot>
+      <slot>选项</slot>
     </span>
   </label>
 </template>
@@ -42,8 +42,6 @@ export default {
   },
   emits: ["update:modelValue"],
   setup(props, { emit }) {
-    console.log(props.type);
-
     const radioGroup = inject("radioGroup", undefined) as any; // from RadioGroup
     const classs = computed(() => {
       const type = `MYX-radio--${props.type}`;
@@ -77,6 +75,7 @@ export default {
       } else {
         // 没有 RadioGroup 时, 修改 Radio v-model
         emit("update:modelValue", props.value);
+        console.log(props.value);
       }
       // Radio, 更改 modelValue, 传递 :value
       // emit("update:modelValue", props.value);
