@@ -1,5 +1,5 @@
 <template>
-  <div :class="classs">
+  <div :class="myClass">
     <slot></slot>
   </div>
 </template>
@@ -35,7 +35,7 @@ export default {
       })
     );
     return {
-      classs: computed(() => ({
+      myClass: computed(() => ({
         "MYX-radio-group": true,
         "MYX-radio-group-col": props.direction === "col",
       })),
@@ -43,4 +43,3 @@ export default {
   },
 };
 </script>
-<style scoped></style>

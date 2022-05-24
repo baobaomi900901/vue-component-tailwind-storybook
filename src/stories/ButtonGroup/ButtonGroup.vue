@@ -9,7 +9,7 @@ import MyButton from "../Button/Button.vue";
 export default {
   name: "my-button-group",
   props: {
-    lable: {
+    label: {
       type: String,
     },
     size: {
@@ -17,7 +17,7 @@ export default {
     },
   },
   setup(props) {
-    console.log(props.lable);
+    console.log(props.label);
     return {
       buttonGroup: computed(() => ({
         "MYX-buttonGroup": true,

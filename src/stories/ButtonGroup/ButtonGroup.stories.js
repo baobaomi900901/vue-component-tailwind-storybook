@@ -16,7 +16,7 @@ const Template = (args) => ({
   // Components used in your story `template` are defined in the `components` object
   components: { MyButton, MyButtonGroup },
   // The story's `args` need to be mapped into the template through the `setup()` method
-  setup() {
+  setup () {
     return { args };
   },
   // And then the `args` are bound to your component with `v-bind="args"`
@@ -30,5 +30,5 @@ const Template = (args) => ({
 export const Default = Template.bind({});
 // More on args: https://storybook.js.org/docs/vue/writing-stories/args1
 Default.args = {
-  lable: "123",
+  label: "123",
 };

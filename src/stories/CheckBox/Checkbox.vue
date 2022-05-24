@@ -6,14 +6,14 @@
 * @version V3.0.0
 !-->
 <template>
-  <label :for="value" :class="classs">
+  <label :for="value" :class="myClass">
     <input
       ref="checkbox"
       type="checkbox"
-      name=""
+      :name="value"
       :id="value"
       :value="value"
-      @click="onChang(value)"
+      @click="onChange(value)"
       :checked="checked"
       :disabled="disabled"
     />
@@ -23,20 +23,24 @@
   </label>
 </template>
 
-<script lang="ts">
+<script>
 import "./Checkbox.css";
-import { ref, reactive, computed, onMounted, inject } from "vue";
+import { ref, computed } from "vue";
 export default {
   name: "my-checkbox",
+
   props: {
     value: {
       type: String,
+      default: "",
     },
     checked: {
       type: Boolean,
+      default: false,
     },
     disabled: {
       type: Boolean,
+      default: false,
     },
     type: {
       type: String,
@@ -45,14 +49,14 @@ export default {
       },
     },
   },
-  emits: ["click"],
+
+  emits: ["post"],
+
   setup(props, { emit }) {
     const checked = ref(props.checked);
-    onMounted(() => {
-      console.log(props.disabled);
-    });
+
     return {
-      classs: computed(() => {
+      myClass: computed(() => {
         const type = props.type ? `MYX-checkbox--${props.type}` : "";
         return {
           "MYX-checkbox": true,
@@ -60,15 +64,14 @@ export default {
           "MYX-checkbox--disabled": props.disabled,
         };
       }),
-      onChang($event) {
+      onChange(value) {
         checked.value = !checked.value;
         if (!props.disabled && (checked.value == true)) {
           checked.value = true;
-          emit("click", $event);
         }
-      },
+        emit("post", value);
+      }
     };
-  },
+  }
 };
 </script>
-<style scoped></style>

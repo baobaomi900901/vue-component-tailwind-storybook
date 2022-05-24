@@ -20,12 +20,15 @@ const Template = (args) => ({
   // Components used in your story `template` are defined in the `components` object
   components: { MyCheckbox },
   // The story's `args` need to be mapped into the template through the `setup()` method
-  setup() {
-    return { args };
+  setup () {
+    function getValue (value) {
+      console.log(value);
+    }
+    return { args, getValue };
   },
   // And then the `args` are bound to your component with `v-bind="args"`
   template: `<div class="flex">
-                <my-checkbox v-bind='args'>吃烧饼</my-checkbox>
+                <my-checkbox v-bind='args' @post="getValue">吃烧饼</my-checkbox>
               </div>`,
 });
 
