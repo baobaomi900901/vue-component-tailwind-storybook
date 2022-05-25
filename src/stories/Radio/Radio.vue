@@ -26,7 +26,7 @@ export default {
     },
     type: {
       type: String,
-      validator: function (value) {
+      validator: function (value:string) {
         return ["primary", "success", "danger"].indexOf(value) !== -1;
       },
     },

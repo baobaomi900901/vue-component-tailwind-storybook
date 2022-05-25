@@ -7,34 +7,25 @@
 !-->
 <template>
   <label :for="value" :class="myClass">
-    <input
-      ref="checkbox"
-      type="checkbox"
-      :name="value"
-      :id="value"
-      :value="value"
-      @click="onChange(value)"
-      :checked="checked"
-      :disabled="disabled"
-    />
+    <input ref="checkbox" type="checkbox" :name="value" :id="value" :value="value" @click="onChange(value)"
+      :checked="checked" :disabled="disabled" />
     <span>
       <slot></slot>
     </span>
   </label>
 </template>
 
-<script>
+<script lang="ts">
 import "./Checkbox.css";
 import { ref, computed } from "vue";
 export default {
   name: "my-checkbox",
 
   props: {
-    value: {
-      type: String,
-      default: "",
+    label: {
+      type: [String, Number],
     },
-    checked: {
+    modelValue: {
       type: Boolean,
       default: false,
     },
@@ -44,7 +35,7 @@ export default {
     },
     type: {
       type: String,
-      validator: function (value) {
+      validator: function (value: string) {
         return ["primary", "success", "danger"].indexOf(value) !== -1;
       },
     },
@@ -64,7 +55,7 @@ export default {
           "MYX-checkbox--disabled": props.disabled,
         };
       }),
-      onChange(value) {
+      onChange(value: boolean) {
         checked.value = !checked.value;
         if (!props.disabled && (checked.value == true)) {
           checked.value = true;
