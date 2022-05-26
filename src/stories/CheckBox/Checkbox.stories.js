@@ -7,35 +7,38 @@ export default {
   component: MyCheckbox,
   // More on argTypes: https://storybook.js.org/docs/vue/api/argtypes
   argTypes: {
-    onClick: {},
-    type: {
-      control: { type: "select" },
-      options: ["primary", "success", "danger"],
-    },
+    // onClick: {},
+    // type: {
+    //   control: { type: "select" },
+    //   options: ["primary", "success", "danger"],
+    // },
   },
 };
 
-// More on component templates: https://storybook.js.org/docs/vue/writing-stories/introduction#using-args
 const Template = (args) => ({
-  // Components used in your story `template` are defined in the `components` object
   components: { MyCheckbox },
-  // The story's `args` need to be mapped into the template through the `setup()` method
   setup () {
-    function getValue (value) {
-      console.log(value);
+    const checkboxValue = ref(false);
+    const onChange = (val) => {
+      console.log('change', val);
     }
-    return { args, getValue };
+    console.log(args);
+    return { checkboxValue, onChange, args };
   },
-  // And then the `args` are bound to your component with `v-bind="args"`
   template: `<div class="flex">
-                <my-checkbox v-bind='args' @post="getValue">吃烧饼</my-checkbox>
-              </div>`,
+              <my-checkbox v-model="checkboxValue" @change="onChange" v-bind="args">吃烧饼</my-checkbox>
+            </div>`,
 });
 
+// 默认模板
 export const Default = Template.bind({});
-// More on args: https://storybook.js.org/docs/vue/writing-stories/args1
-Default.args = {
-  value: "烧饼",
-  checked: false,
-  disabled: false
-};
+
+// Disabled
+export const Disabled = Template.bind({
+  args: {
+    disabled: true
+  }
+});
+Disabled.args = {
+  disabled: true
+}

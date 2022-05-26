@@ -22,7 +22,7 @@ export default {
     },
   },
   emits: ["update:modelValue"],
-  setup(props, { emit }) {
+  setup(props:any, { emit }:any) {
     const changeEvent = (value: any) => {
       emit("update:modelValue", value);
     };

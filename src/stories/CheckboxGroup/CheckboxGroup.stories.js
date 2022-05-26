@@ -16,35 +16,28 @@ const Template = (args) => ({
   components: { MyCheckbox, MyCheckboxGroup },
   // The story's `args` need to be mapped into the template through the `setup()` method
   setup () {
-    const arr = ref([])
-    function getValue (value) {
-      if (typeof value === 'string') {
-        if (!arr.value.includes(value)) {
-          arr.value.push(value)
-        } else {
-          arr.value.splice(arr.value.indexOf(value), 1)
-        }
-      }
+    const checkboxValue = ref([])
+    const onChange = (val) => {
+      console.log('change', val);
     }
-    return { arr, args, getValue };
+    const checkboxList = [
+      { value: "A", },
+      { value: "B", }
+    ]
+    return { args, checkboxValue, checkboxList, onChange };
   },
   // And then the `args` are bound to your component with `v-bind="args"`
-  template: `<my-checkbox-group class="flex">
-                <my-checkbox v-for="(item, index) in args" :key="index" type='primary' v-bind="item" @post="getValue">{{ item.value }}</my-checkbox>
-            </my-checkbox-group>`,
+  template: `<my-checkbox-group class="flex" v-model="checkboxValue" @change="onChange" v-bind="args">
+                <my-checkbox v-for="(item, index) in checkboxList" :key="index" type='primary' :label='item.value' >{{ item.value }}</my-checkbox>
+            </my-checkbox-group>
+            `,
 });
 
 export const Default = Template.bind({});
-// More on args: https://storybook.js.org/docs/vue/writing-stories/args1
-Default.args = [
-  {
-    value: "A",
-    checked: false,
-    disabled: false
-  },
-  {
-    value: "B",
-    checked: false,
-    disabled: false
-  }
-];
+// More on args: https://storybook.js.org/docs/vue/writing-stories/args
+
+
+export const Disabled = Template.bind({});
+Disabled.args = {
+  disabled: true
+}

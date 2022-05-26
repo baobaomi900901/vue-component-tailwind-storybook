@@ -6,9 +6,9 @@
 * @version V3.0.0
 !-->
 <template>
-  <label :for="value" :class="myClass">
-    <input ref="checkbox" type="checkbox" :name="value" :id="value" :value="value" @click="onChange(value)"
-      :checked="checked" :disabled="disabled" />
+  <label :for="label" :class="myClass">
+    <input ref="checkbox" type="checkbox" :name="label" :value="label" v-model="checkboxValue" @change="onChange"
+      :disabled="isDisabled" />
     <span>
       <slot></slot>
     </span>
@@ -17,13 +17,26 @@
 
 <script lang="ts">
 import "./Checkbox.css";
-import { ref, computed } from "vue";
+import { inject, computed } from "vue";
+
+type IProps = {
+  label: string | number,
+  modelValue: boolean
+  disabled: boolean
+  type: "primary" | "success" | "danger"
+}
+
+type IInject = {
+  modelValue: (string | number)[],
+  changeEvent: (preload: string | number) => void
+  disabled: boolean
+}
+
 export default {
   name: "my-checkbox",
-
   props: {
     label: {
-      type: [String, Number],
+      type: [String, Number]
     },
     modelValue: {
       type: Boolean,
@@ -41,27 +54,51 @@ export default {
     },
   },
 
-  emits: ["post"],
+  emits: ["update:modelValue", 'change'],
 
-  setup(props, { emit }) {
-    const checked = ref(props.checked);
+  setup(props: IProps, { emit }: any) {
+    const checkboxGroup = inject("checkboxGroup", undefined) as IInject | undefined;
 
-    return {
-      myClass: computed(() => {
-        const type = props.type ? `MYX-checkbox--${props.type}` : "";
-        return {
-          "MYX-checkbox": true,
-          [type]: props.type,
-          "MYX-checkbox--disabled": props.disabled,
-        };
-      }),
-      onChange(value: boolean) {
-        checked.value = !checked.value;
-        if (!props.disabled && (checked.value == true)) {
-          checked.value = true;
+    const isDisabled = computed(() => {
+      return checkboxGroup ? checkboxGroup.disabled : props.disabled
+    })
+
+    const checkboxValue = computed({
+      get: () => !!checkboxGroup ? checkboxGroup.modelValue : props.modelValue,
+      set: (val) => {
+        if (checkboxGroup && Array.isArray(val)) {
+          checkboxGroup.changeEvent(val as any)
+        } else {
+          emit("update:modelValue", val)
         }
-        emit("post", value);
       }
+    });
+
+    const checked = computed(() => {
+      if (checkboxGroup) {
+        return checkboxGroup.modelValue.includes(props.label)
+      } else {
+        return props.modelValue
+      }
+    });
+
+    const myClass = computed(() => {
+      const type = props.type ? `MYX-checkbox--${props.type}` : "";
+      return {
+        "MYX-checkbox": true,
+        [type]: props.type,
+        "MYX-checkbox--disabled": props.disabled,
+      };
+    })
+    const onChange = (e: InputEvent) => {
+      emit('change', checkboxValue.value, e)
+    }
+    return {
+      myClass,
+      checked,
+      onChange,
+      checkboxValue,
+      isDisabled
     };
   }
 };

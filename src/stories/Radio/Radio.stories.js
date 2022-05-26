@@ -19,7 +19,7 @@ const Template = (args) => ({
   // Components used in your story `template` are defined in the `components` object
   components: { MyRadio },
   // The story's `args` need to be mapped into the template through the `setup()` method
-  setup() {
+  setup () {
     const groupValue = ref("直角");
     // const bbm = "vvn";
     return { args, groupValue };
@@ -33,5 +33,5 @@ const Template = (args) => ({
 });
 
 export const Default = Template.bind({});
-// More on args: https://storybook.js.org/docs/vue/writing-stories/args1
+// More on args: https://storybook.js.org/docs/vue/writing-stories/args
 Default.args = {};

@@ -1,14 +1,7 @@
 <template>
   <label :for="value" :class="classs">
-    <input
-      type="radio"
-      :id="value"
-      :name="name"
-      :value="value"
-      :disabled="disabled"
-      :checked="isCheck"
-      @change="radioChange"
-    />
+    <input type="radio" :id="value" :name="name" :value="value" :disabled="disabled" :checked="isCheck"
+      @change="radioChange" />
     <span>
       <slot>选项</slot>
     </span>
@@ -26,7 +19,7 @@ export default {
     },
     type: {
       type: String,
-      validator: function (value:string) {
+      validator: function (value: string) {
         return ["primary", "success", "danger"].indexOf(value) !== -1;
       },
     },
@@ -41,7 +34,7 @@ export default {
     },
   },
   emits: ["update:modelValue"],
-  setup(props, { emit }) {
+  setup(props: any, { emit }: any) {
     const radioGroup = inject("radioGroup", undefined) as any; // from RadioGroup
     const classs = computed(() => {
       const type = `MYX-radio--${props.type}`;
@@ -88,4 +81,5 @@ export default {
   },
 };
 </script>
-<style scoped></style>
+<style scoped>
+</style>
