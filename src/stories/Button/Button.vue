@@ -20,7 +20,6 @@ import { ref, reactive, computed } from "vue";
 
 export default {
   name: "my-button",
-
   props: {
     label: {
       type: String,
@@ -52,9 +51,6 @@ export default {
       default: "medium",
     },
     icon: {
-      type: String,
-    },
-    backgroundColor: {
       type: String,
     },
   },

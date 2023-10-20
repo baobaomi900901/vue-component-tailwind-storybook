@@ -1,14 +1,17 @@
 # Vue3 + TailwindCSS + StoryBook
 
 ## 安装与运行
+
 ### 安装依赖
+
 ```shell
-yarn 
+yarn
 // or
 npm i
 ```
 
 ### 运行
+
 ```shell
 yarn storybook
 // or
@@ -16,7 +19,9 @@ npm run storybook
 ```
 
 ### 初始化组件目录
+
 当要新建组件的时候，可以用这个命令创建模板文件，以便于开发。
+
 ```shell
 // xxx为组件名称，组件名称必须大写并且符合驼峰命名
 yarn component xxx
@@ -27,6 +32,7 @@ npm run component xxx
 ### 运行
 
 ## 已完成组件
+
 - Button 按钮
 - ButtonGroup 按钮组
 - Radio 单选框
@@ -34,11 +40,15 @@ npm run component xxx
 - RadioGroup 单选框组
 
 ## 待完成的组件
-- Transfer 穿梭框  阿鸭正在施工🛠
+
+- Transfer 穿梭框 阿鸭正在施工 🛠
 
 ## 待开始组件
-暂时根据ElementUI的组件功能作为基础功能来做，在此基础上再根据自己的需求删减功能。
+
+暂时根据 ElementUI 的组件功能作为基础功能来做，在此基础上再根据自己的需求删减功能。
+
 ### 表单组件
+
 - CheckBox 复选框（我就看看安仔什么时候写）
 - CheckBoxGroup 复选框组
 - Cascader 级联选择器
@@ -53,6 +63,7 @@ npm run component xxx
 - TimePicker 时间选择器
 
 ### 数据展示组件
+
 - Avater 头像
 - Badge 徽章
 - Calendar 日历
@@ -69,6 +80,7 @@ npm run component xxx
 - Timeline 时间线
 
 ### 导航
+
 - Backtop 回到顶部
 - Breadcrumb 面包屑
 - Dropdown 下拉菜单
@@ -79,6 +91,7 @@ npm run component xxx
 - Pagination 分页器
 
 ### 反馈组件
+
 - Alert 提示
 - Dialog 对话框
 - Drawer 抽屉
@@ -92,5 +105,6 @@ npm run component xxx
 
 ## 遇到的一些问题
 
-### Unknown at rule @apply报错
-在vscode中下载插件**PostCSS Language Support**。
+### Unknown at rule @apply 报错
+
+在 vscode 中下载插件**PostCSS Language Support**。

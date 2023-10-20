@@ -1,0 +1,16 @@
+{
+  "id": "4293001",
+  "name": "MobyUIKit",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "37738408",
+      "name": "搜索",
+      "font_class": "search",
+      "unicode": "e628",
+      "unicode_decimal": 58920
+    }
+  ]
+}

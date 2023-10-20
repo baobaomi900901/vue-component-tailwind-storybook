@@ -1,5 +1,6 @@
 import { createApp } from "vue";
 import App from "./App.vue";
-import "./output.css";
+import "./input.css";
+import "./assets/iconFont/iconfont.css";
 
 createApp(App).mount("#app");

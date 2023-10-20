@@ -1,0 +1,106 @@
+.MButton {
+  @apply h-8 min-w-2 w-fit text-sm bg-white hover:bg-gray-100 active:bg-gray-300 border border-gray-200 rounded-md flex justify-center items-center select-none capitalize cursor-pointer;
+}
+.MButton > span {
+  @apply mx-4;
+}
+.MButton > .iconfont + span {
+  @apply ml-1;
+}
+.MButton .iconfont-right {
+  @apply ml-1;
+}
+.MButton-primary {
+  @apply text-white bg-blue-500 hover:bg-blue-600 active:bg-blue-700;
+}
+.MButton-success {
+  @apply text-white bg-green-500 hover:bg-green-600 active:bg-green-700;
+}
+.MButton-info {
+  @apply text-white bg-gray-500 hover:bg-gray-600 active:bg-gray-700;
+}
+.MButton-warning {
+  @apply text-white bg-orange-500 hover:bg-orange-600 active:bg-orange-700;
+}
+.MButton-danger {
+  @apply text-white bg-red-500 hover:bg-red-600 active:bg-red-700;
+}
+.MButton-text {
+  @apply text-blue-500 bg-transparent border-0 hover:text-blue-500 hover:bg-blue-50 active:text-blue-500 active:bg-blue-100;
+}
+/* isPlain / 线性按钮 */
+.MButton-plain {
+  @apply bg-transparent hover:bg-gray-100 active:bg-gray-300;
+}
+.MButton-primary-plain {
+  @apply bg-blue-50 border-blue-500 text-blue-500 hover:bg-blue-100 active:bg-blue-200;
+}
+
+.MButton-success-plain {
+  @apply bg-green-50 border-green-500 text-green-500 hover:bg-green-100 active:bg-green-200;
+}
+.MButton-info-plain {
+  @apply bg-gray-50 border-gray-500 text-gray-500 hover:bg-gray-100 active:bg-gray-200;
+}
+.MButton-warning-plain {
+  @apply bg-orange-50 border-orange-500 text-orange-500 hover:bg-orange-100 active:bg-orange-200;
+}
+.MButton-danger-plain {
+  @apply bg-red-50 border-red-500 text-red-500 hover:bg-red-100 active:bg-red-200;
+}
+
+/* isRound / 胶囊 */
+.MButton-round {
+  @apply rounded-full px-1;
+}
+
+/* size */
+.MButton-sm {
+  @apply h-6 min-w-2 w-fit text-xs;
+}
+.MButton-lg {
+  @apply h-10 min-w-2 w-fit text-base;
+}
+
+.MButton-disabled {
+  @apply opacity-40;
+  /* 指针改为禁止 */
+  cursor: not-allowed;
+}
+.MButton-disabled.MButton {
+  @apply hover:bg-white active:bg-white;
+}
+.MButton-disabled.MButton-primary {
+  @apply hover:bg-blue-500 active:bg-blue-500;
+}
+.MButton-disabled.MButton-success {
+  @apply hover:bg-green-500 active:bg-green-500;
+}
+.MButton-disabled.MButton-info {
+  @apply hover:bg-gray-500 active:bg-gray-500;
+}
+.MButton-disabled.MButton-warning {
+  @apply hover:bg-orange-500 active:bg-orange-500;
+}
+.MButton-disabled.MButton-danger {
+  @apply hover:bg-red-500 active:bg-red-500;
+}
+
+.MButton-disabled.MButton-plain {
+  @apply hover:bg-white active:bg-white;
+}
+.MButton-disabled.MButton-primary-plain {
+  @apply hover:bg-blue-50 active:bg-blue-50;
+}
+.MButton-disabled.MButton-success-plain {
+  @apply hover:bg-green-50 active:bg-green-50;
+}
+.MButton-disabled.MButton-info-plain {
+  @apply hover:bg-gray-50 active:bg-gray-50;
+}
+.MButton-disabled.MButton-warning-plain {
+  @apply hover:bg-orange-50 active:bg-orange-50;
+}
+.MButton-disabled.MButton-danger-plain {
+  @apply hover:bg-red-50 active:bg-red-50;
+}
