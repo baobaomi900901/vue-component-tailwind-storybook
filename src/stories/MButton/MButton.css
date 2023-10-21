@@ -2,7 +2,10 @@
   @apply h-8 min-w-2 w-fit text-sm bg-white hover:bg-gray-100 active:bg-gray-300 border border-gray-200 rounded-md flex justify-center items-center select-none capitalize cursor-pointer;
 }
 .MButton > span {
-  @apply mx-4;
+  @apply mx-4 flex items-center;
+}
+.MButton .iconfont {
+  @apply ml-4;
 }
 .MButton > .iconfont + span {
   @apply ml-1;
@@ -10,6 +13,20 @@
 .MButton .iconfont-right {
   @apply ml-1;
 }
+/* loading */
+.icon-loading {
+  @apply inline-block w-4 h-4 rounded-full border-2 border-blue-300 border-t-transparent border-solid;
+  /* 旋转 */
+  transform: rotateZ(-90deg);
+  animation: loading 1s linear infinite;
+}
+
+@keyframes loading {
+  100% {
+    transform: rotateZ(270deg);
+  }
+}
+/* type */
 .MButton-primary {
   @apply text-white bg-blue-500 hover:bg-blue-600 active:bg-blue-700;
 }
@@ -48,12 +65,10 @@
 .MButton-danger-plain {
   @apply bg-red-50 border-red-500 text-red-500 hover:bg-red-100 active:bg-red-200;
 }
-
 /* isRound / 胶囊 */
 .MButton-round {
   @apply rounded-full px-1;
 }
-
 /* size */
 .MButton-sm {
   @apply h-6 min-w-2 w-fit text-xs;
@@ -61,11 +76,9 @@
 .MButton-lg {
   @apply h-10 min-w-2 w-fit text-base;
 }
-
+/* disabled */
 .MButton-disabled {
-  @apply opacity-40;
-  /* 指针改为禁止 */
-  cursor: not-allowed;
+  @apply opacity-40 cursor-not-allowed;
 }
 .MButton-disabled.MButton {
   @apply hover:bg-white active:bg-white;
@@ -102,5 +115,47 @@
   @apply hover:bg-orange-50 active:bg-orange-50;
 }
 .MButton-disabled.MButton-danger-plain {
+  @apply hover:bg-red-50 active:bg-red-50;
+}
+
+/* loading */
+.MButton-loading {
+  @apply cursor-wait opacity-60;
+}
+.MButton-loading.MButton {
+  @apply hover:bg-white active:bg-white;
+}
+.MButton-loading.MButton-primary {
+  @apply hover:bg-blue-500 active:bg-blue-500;
+}
+.MButton-loading.MButton-success {
+  @apply hover:bg-green-500 active:bg-green-500;
+}
+.MButton-loading.MButton-info {
+  @apply hover:bg-gray-500 active:bg-gray-500;
+}
+.MButton-loading.MButton-warning {
+  @apply hover:bg-orange-500 active:bg-orange-500;
+}
+.MButton-loading.MButton-danger {
+  @apply hover:bg-red-500 active:bg-red-500;
+}
+
+.MButton-loading.MButton-plain {
+  @apply hover:bg-white active:bg-white;
+}
+.MButton-loading.MButton-primary-plain {
+  @apply hover:bg-blue-50 active:bg-blue-50;
+}
+.MButton-loading.MButton-success-plain {
+  @apply hover:bg-green-50 active:bg-green-50;
+}
+.MButton-loading.MButton-info-plain {
+  @apply hover:bg-gray-50 active:bg-gray-50;
+}
+.MButton-loading.MButton-warning-plain {
+  @apply hover:bg-orange-50 active:bg-orange-50;
+}
+.MButton-loading.MButton-danger-plain {
   @apply hover:bg-red-50 active:bg-red-50;
 }

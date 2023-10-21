@@ -1,4 +1,5 @@
 import MButton from "./MButton.vue";
+import "../../assets/iconFont/iconfont.css"
 
 // More on default export: https://storybook.js.org/docs/vue/writing-stories/introduction#default-export
 export default {
@@ -11,7 +12,7 @@ export default {
     },
     size: {
       control: { type: "select" },
-      options: ["tiny", "small", "medium", "large"],
+      options: ["sm", "lg", "defaul"],
       defaultValue: "medium",
     },
     type: {

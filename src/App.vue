@@ -99,12 +99,14 @@
   <div class="group flex gap-8">
     <MButton size="sm">Default</MButton>
     <MButton type="primary" size="lg">Primary</MButton>
+    <MButton type="primary" size="lg" loading round plain>loading</MButton>
   </div>
 </template>
 
 <script setup>
 import { ref, reactive } from "vue";
 import MButton from "./stories/MButton/MButton.vue";
+import Button from "./stories/Button/Button.vue";
 
 const result = ref("");
 const clickEven = (val) => {

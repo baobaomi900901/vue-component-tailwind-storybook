@@ -9,27 +9,39 @@
   <div
     id="MButton"
     class="MButton"
-    :class="[classes, isPlain, isRound, isDisabled,size]"
+    :class="
+    {
+      [classes] : true,
+      [isPlain] : true,
+      [isRound] : true,
+      [isDisabled] : true,
+      [size] : true,
+      'MButton-loading' : loading,
+    }"
     @click="clickChild"
   >
     <i
       v-if="icon"
-      class="iconfont"
       :class="{
         [iconName]: true,
-        'ml-0': !$slots.default,
-        'ml-4': $slots.default,
+        'iconfont': $slots.default,
       }"
     ></i>
     <span v-if="$slots.default">
       <slot>Button</slot>
+      <i
+      v-if="loading"
+      :class="{
+        [isLoading]: true,
+      }"
+    ></i>
     </span>
   </div>
 </template>
 
 <script setup>
 import "./MButton.css";
-import { ref, reactive, computed  } from "vue";
+import { ref, reactive, computed } from "vue";
 // 获取 props.type
 const props = defineProps({
   type: {
@@ -55,7 +67,11 @@ const props = defineProps({
   size: {
     type: String,
     default: "",
-  }
+  },
+  loading: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 // 通过 props.type 获取对应的样式
@@ -72,6 +88,9 @@ const isRound = computed(() => {
 const isDisabled = computed(() => {
   return props.disabled ? `MButton-disabled` : "";
 });
+const isLoading = computed(() => {
+  return props.loading ? `iconfont iconfont-right icon-loading` : "";
+});
 const iconName = computed(() => {
   return props.icon ? props.icon : "";
 });
@@ -80,15 +99,13 @@ const size = computed(() => {
   return props.size ? `MButton-${props.size}` : "";
 });
 
+const emit = defineEmits(["clickChild"]);
 
-const emit = defineEmits(['clickChild'])
-
-
-const clickChild=()=>{
-  let param = '我是子组件的参数'
+const clickChild = () => {
+  let param = "我是子组件的参数";
   //传递给父组件
-  emit('clickChild',param)
-}
+  if (!props.disabled) emit("clickChild", param);
+};
 </script>
 <style >
 </style>
