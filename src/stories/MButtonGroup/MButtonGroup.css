@@ -1,0 +1,19 @@
+.MButtonGroup {
+  display: flex;
+}
+
+.MButtonGroup .MButton + .MButton {
+  @apply border-l border-l-transparent;
+}
+
+.MButtonGroup > .MButton {
+  @apply rounded-none;
+}
+
+.MButtonGroup > .MButton:nth-child(1) {
+  @apply rounded-tl-md rounded-bl-md;
+}
+
+.MButtonGroup > .MButton:nth-last-child(1) {
+  @apply rounded-tr-md rounded-br-md;
+}

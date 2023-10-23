@@ -22,9 +22,10 @@
   >
     <i
       v-if="icon"
+      class="iconfont"
       :class="{
         [iconName]: true,
-        'iconfont': $slots.default,
+        'ml-4': $slots.default,
       }"
     ></i>
     <span v-if="$slots.default">

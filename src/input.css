@@ -37,6 +37,7 @@
   font-weight: var(--font-weight);
   /* 使用字体颜色 */
   color: var(--color-normal);
+  box-sizing: border-box;
 }
 .font-bold {
   font-family: "MyFontBold", sans-serif;
