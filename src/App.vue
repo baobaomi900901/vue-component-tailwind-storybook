@@ -12,9 +12,11 @@
   </div>
   <div class="group flex gap-8">
     <MButtonGroup>
-      <MButton type="primary" plain>上一页</MButton>
-      <MButton type="primary" plain>本页</MButton>
-      <MButton type="primary" plain>下一页</MButton>
+      <MButton type="primary" >上一页</MButton>
+      <MButton type="success" >本页</MButton>
+      <MButton type="primary" >本页</MButton>
+      <MButton type="primary" >本页</MButton>
+      <MButton type="primary" >下一页</MButton>
     </MButtonGroup>
   </div>
   <div class=" border-1">123</div>

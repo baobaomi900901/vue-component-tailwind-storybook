@@ -2,10 +2,22 @@
   display: flex;
 }
 
-.MButtonGroup .MButton + .MButton {
+.MButtonGroup .MButton + .MButton-plain,
+.MButtonGroup .MButton + .MButton-primary-plain,
+.MButtonGroup .MButton + .MButton-success-plain,
+.MButtonGroup .MButton + .MButton-info-plain,
+.MButtonGroup .MButton + .MButton-warning-plain,
+.MButtonGroup .MButton + .MButton-danger-plain {
   @apply border-l border-l-transparent;
 }
-
+.MButtonGroup .MButton + .MButton,
+.MButtonGroup .MButton + .MButton-primary,
+.MButtonGroup .MButton + .MButton-success,
+.MButtonGroup .MButton + .MButton-info,
+.MButtonGroup .MButton + .MButton-warning,
+.MButtonGroup .MButton + .MButton-danger {
+  @apply border-l border-l-white;
+}
 .MButtonGroup > .MButton {
   @apply rounded-none;
 }
