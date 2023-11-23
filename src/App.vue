@@ -1,8 +1,8 @@
 <template>
-  <h1>{{ myvalue }}</h1>
+  <h1>{{ RadioValue }}</h1>
   <div>
-    <MRadio name="bbm" label="one" v-model="myvalue">选项1</MRadio>
-    <MRadio name="bbm" label="two" v-model="myvalue">选项2</MRadio>
+    <MRadio name="bbm" label="one" :value="'one'" v-model="RadioValue">选项1</MRadio>
+    <MRadio name="bbm" label="two" :value="'two'" v-model="RadioValue">选项2</MRadio>
   </div>
 </template>
 
@@ -10,7 +10,7 @@
 import { ref, reactive } from "vue";
 import MRadio from "./stories/MRadio/MRadio.vue";
 
-const myvalue = ref("one");
+const RadioValue = ref("one");
 </script>
 
 <style>

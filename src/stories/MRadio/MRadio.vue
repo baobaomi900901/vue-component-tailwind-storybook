@@ -11,9 +11,9 @@
       <input
         type="radio"
         :name="name"
-        :value="label"
+        :value="modelValue"
         :checked="isChecked"
-        @input="updateValue($event.target.label)"
+        @input="updateModalValue($event.target.value)"
       />
     </span>
     <slot></slot>
@@ -35,14 +35,14 @@ const props = defineProps({
   },
 });
 
-const emit = defineEmits(["update:value"]);
+const emit = defineEmits(["update:modelValue"]);
 
 const isChecked = computed(() => {
   return props.label === props.modelValue;
 });
 
-const updateValue = (value) => {
-  emit("update:value", value);
+const updateModalValue = (value) => {
+  emit("update:modelValue", value);
 };
 </script>
 <style scoped>
