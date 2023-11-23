@@ -118,6 +118,7 @@
 /* loading */
 .MButton-loading {
   @apply cursor-wait opacity-60;
+  /* css禁止点击事件 */
 }
 .MButton-loading.MButton {
   @apply hover:bg-white active:bg-white;

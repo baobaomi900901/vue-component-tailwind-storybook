@@ -9,16 +9,15 @@
   <div
     id="MButton"
     class="MButton"
-    :class="
-    {
-      [classes] : true,
-      [isPlain] : true,
-      [isRound] : true,
-      [isDisabled] : true,
-      [size] : true,
-      'MButton-loading' : loading,
+    :class="{
+      [classes]: true,
+      [isPlain]: true,
+      [isRound]: true,
+      [isDisabled]: true,
+      [size]: true,
+      'MButton-loading': loading,
     }"
-    @click="clickChild"
+    @click="clickMyself"
   >
     <i
       v-if="icon"
@@ -31,11 +30,11 @@
     <span v-if="$slots.default">
       <slot>Button</slot>
       <i
-      v-if="loading"
-      :class="{
-        [isLoading]: true,
-      }"
-    ></i>
+        v-if="loading"
+        :class="{
+          [isLoading]: true,
+        }"
+      ></i>
     </span>
   </div>
 </template>
@@ -100,12 +99,13 @@ const size = computed(() => {
   return props.size ? `MButton-${props.size}` : "";
 });
 
-const emit = defineEmits(["clickChild"]);
+//定义事件, 传递给父组件, 通过 emit, 传递给父组件 事件名, 事件参数
+const emit = defineEmits(["clickBTN"]);
 
-const clickChild = () => {
+const clickMyself = () => {
   let param = "我是子组件的参数";
   //传递给父组件
-  if (!props.disabled) emit("clickChild", param);
+  if (!props.disabled && !props.loading) emit("clickBTN", param);
 };
 </script>
 <style >
